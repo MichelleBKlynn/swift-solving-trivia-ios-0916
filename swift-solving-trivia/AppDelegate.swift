@@ -12,11 +12,26 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    /*
-     
-     write your function here
-     
-     */
-
+    func solveTrivia(statesAndCapitals: [String: String]) -> String {
+        var answer = false
+       
+        for (state, capital) in statesAndCapitals {
+            let states = Set(state.lowercaseString.characters).sort()
+            let capitals = Set(capital.lowercaseString.characters).sort()
+           
+            answer = (states.map { capitals.contains($0) }).contains(true)
+            
+            if answer == false {
+               
+                return state
+            }
+            
+        }
+        
+        return ""
+    }
 }
+
+
+
 
